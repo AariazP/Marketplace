@@ -29,22 +29,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         deserialize();
-        Marketplace m = Marketplace.getInstance();
-
-        Vendedor vendedor = new Vendedor("Alejandro", "Arias", "2", "2");
-
-        vendedor.addVendedorAmigo(new Vendedor("Alejandro", "Arias", "3", "3"));
-        vendedor.addVendedorAmigo(new Vendedor("Alejandro", "Arias", "4", "4"));
-        vendedor.addVendedorAmigo(new Vendedor("Alejandro", "Arias", "5", "5"));
-        vendedor.addVendedorAmigo(new Vendedor("Alejandro", "Arias", "6", "6"));
-        vendedor.addVendedorAmigo(new Vendedor("Alejandro", "Arias", "7", "7"));
-        vendedor.addVendedorAmigo(new Vendedor("Alejandro", "Arias", "8", "8"));
-        vendedor.addVendedorAmigo(new Vendedor("Alejandro", "Arias", "9", "9"));
-
-        m.addVendedor(vendedor);
-
-
-
 
         launch();
     }
@@ -53,8 +37,10 @@ public class Main extends Application {
         Marketplace marketplace = Serialize.deserializar("/users/alejandroarias/Desktop/data.txt");
         if (marketplace != null) {
             Marketplace.setInstance(marketplace);
+            System.out.println(" La instancia no es nulla");
         }else {
-            Marketplace.setInstance(Marketplace.getInstance());
+           Marketplace.getInstance();
+            System.out.println(" La instancia es nulla");
         }
     }
 
@@ -64,6 +50,7 @@ public class Main extends Application {
        loadScene(PathUtilities.LOGIN);
         stage.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, event -> {
             serialize();
+            System.out.println(" Serializo " );
         });
     }
 

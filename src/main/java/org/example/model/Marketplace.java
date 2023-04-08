@@ -2,12 +2,14 @@ package org.example.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 @Getter
 @Setter
+@ToString
 public class Marketplace implements Serializable {
 
     private static Marketplace instance;
@@ -26,7 +28,9 @@ public class Marketplace implements Serializable {
     }
 
     public static void setInstance(Marketplace marketplace) {
-        instance = marketplace;
+       getInstance();
+        System.out.println("marketplace deserializado = " + marketplace);
+       instance.setVendedores(marketplace.getVendedores());
     }
 
 

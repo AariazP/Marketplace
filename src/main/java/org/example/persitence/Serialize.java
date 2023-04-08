@@ -16,7 +16,7 @@ public class Serialize {
         Object objeto = Marketplace.getInstance();
         FileOutputStream fileOutputStream = null;
         try {
-            fileOutputStream = new FileOutputStream(ruta, true);
+            fileOutputStream = new FileOutputStream(ruta);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
