@@ -10,6 +10,7 @@ import javafx.stage.WindowEvent;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.controllers.Controller;
+import org.example.controllers.PrincipalController;
 import org.example.model.Marketplace;
 import org.example.model.Vendedor;
 import org.example.persitence.Serialize;
@@ -29,7 +30,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         deserialize();
-
         launch();
     }
 
@@ -37,7 +37,6 @@ public class Main extends Application {
         Marketplace marketplace = Serialize.deserializar("/users/alejandroarias/Desktop/data.txt");
         if (marketplace != null) {
             Marketplace.setInstance(marketplace);
-            System.out.println(" La instancia no es nulla");
         }else {
            Marketplace.getInstance();
             System.out.println(" La instancia es nulla");
@@ -67,7 +66,12 @@ public class Main extends Application {
             Pane pane = loader.load();
             Controller controller = loader.getController();
             controller.setMain(this);
+
+            if(controller instanceof PrincipalController){
+                ((PrincipalController) controller).cargarNombre();
+            }
             Scene scene = new Scene(pane);
+
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

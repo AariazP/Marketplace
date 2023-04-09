@@ -29,7 +29,6 @@ public class Marketplace implements Serializable {
 
     public static void setInstance(Marketplace marketplace) {
        getInstance();
-        System.out.println("marketplace deserializado = " + marketplace);
        instance.setVendedores(marketplace.getVendedores());
     }
 
